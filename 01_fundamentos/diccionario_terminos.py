@@ -4,10 +4,39 @@ inventario = {
     "L001": {"nombre": "LED Rojo", "cantidad": 25, "precio": 0.15},
     "T001": {"nombre": "Transistor 2N2222", "cantidad": 30, "precio": 0.25}}
 
-# buscar un componente por su código
+#escoge si quiere o no todo 
 
-el = input("Ingrese el código del componente (R001, C001, L001, T001): ").upper()
-if el in inventario:
+v = input ("¿Desea ver todo el inventario? (s/n): ").lower()
+if v == "s":
+    for i in inventario:
+        print(f"{i}: {inventario[i]}")
+elif v == "n":
+
+ # buscar un componente por su código y dice todo sobre él
+
+ el = input("Ingrese el código del componente (R001, C001, L001, T001): ").upper()
+
+ # si quiere conocer algo especifico
+
+dato = input("¿Qué dato desea conocer? nombre (n), cantidad (c), precio (p), todos (t): ").lower()
+if dato == "n":
+    dato = "nombre"
+elif dato == "c":
+    dato = "cantidad"
+elif dato == "p":
+    dato = "precio"
+elif dato == "t":
+    dato = "todos"
+else:
+    print("Dato no válido.")
+
+if dato == "nombre":
+    print("Nombre:", inventario[el]["nombre"])
+elif dato == "cantidad":
+    print("Cantidad:", inventario[el]["cantidad"])
+elif dato == "precio":
+    print("Precio:", inventario[el]["precio"])
+elif dato == "todos" and el in inventario:
     componente = inventario[el]
     print(f"Nombre: {componente['nombre']}")
     print(f"Cantidad: {componente['cantidad']}")
@@ -15,7 +44,5 @@ if el in inventario:
 else:
     print("Componente no encontrado.")
 
-# mostrar todo el inventario
-for i in inventario:
-    print(f"{inventario[i]}: {inventario[i]}")
+
 
